@@ -185,27 +185,33 @@
                     let properties = obj.properties;
                     
                     function createRows(obj){
-                        var rows;
+                        var rows = '';
                         for (var key in obj) {
                             //property
                             rows += '<tr><td>'+key+'</td>';
                             //machine name
                             rows += '<td>'+obj[key].basic_info.machine_name+'</td>';
                             //project
-                            const project = obj[key].project ? obj[key].project : '';
-                            rows += '<td>'+project+'</td>';
+                            const project = obj[key].project ? obj[key].project : '-';                            
+                            rows += '<td style="text-align: center;">'+project+'</td>';
                             //collection
-                            const collection = obj[key].collection ? obj[key].collection : '';
-                            rows += '<td>'+collection+'</td>';
+                            const collection = obj[key].collection ? obj[key].collection : '-';                            
+                            rows += '<td style="text-align: center;">'+collection+'</td>';
                             //resource
-                            const resource = obj[key].resource ? obj[key].resource : '';
-                            rows += '<td>'+resource+'</td>';
-                        }  
+                            const resource = obj[key].resource ? obj[key].resource : '-';
+                            rows += '<td style="text-align: center;">'+resource+'</td>';
+                        }
                         return rows;
                     }
                    
                     editor.insertHtml( '<table class="metadata-table"><thead><tr class="table-firstrow"><th style="text-align: left;">PROPERTY</th> <th style="text-align: left;">MACHINE NAME</th> <th style="text-align: center;">PROJECT</th> <th style="text-align: center;">COLLECTION</th> <th style="text-align: center;">RESOURCE</th></tr></thead><tbody>'+
-                    createRows(properties) + '</tbody></table>' );
+                    createRows(properties.basic) + '<tr class="table-row-acdhBlue"><td colspan="5" style="text-align">ACTORS INVOLVED</td></tr>' +
+                    createRows(properties.actors_involved) + '<tr class="table-row-acdhBlue"><td colspan="5" style="text-align">COVERAGE</td></tr>' +
+                    createRows(properties.coverage) + '<tr class="table-row-acdhBlue"><td colspan="5" style="text-align">RIGHTS & ACCESS</td></tr>' +
+                    createRows(properties.right_access) + '<tr class="table-row-acdhBlue"><td colspan="5" style="text-align">DATES</td></tr>' +
+                    createRows(properties.dates) + '<tr class="table-row-acdhBlue"><td colspan="5" style="text-align">RELATIONS TO OTHER PROJECTS, COLLECTIONS OR RESOURCES</td></tr>' +
+                    createRows(properties.relations_other_projects) + '<tr class="table-row-acdhBlue"><td colspan="5" style="text-align">CURATION, AUTOMATIC</td></tr>' +
+                    createRows(properties.curation) + '</tbody></table>' );
                 }
             });
             
