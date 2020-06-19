@@ -186,20 +186,22 @@
                     
                     function createRows(obj){
                         var rows = '';
-                        for (var key in obj) {
-                            //property
-                            rows += '<tr><td>'+key+'</td>';
-                            //machine name
-                            rows += '<td>'+obj[key].basic_info.machine_name+'</td>';
-                            //project
-                            const project = obj[key].project ? obj[key].project : '-';                            
-                            rows += '<td style="text-align: center;">'+project+'</td>';
-                            //collection
-                            const collection = obj[key].collection ? obj[key].collection : '-';                            
-                            rows += '<td style="text-align: center;">'+collection+'</td>';
-                            //resource
-                            const resource = obj[key].resource ? obj[key].resource : '-';
-                            rows += '<td style="text-align: center;">'+resource+'</td>';
+                        for (const [k, o] of Object.entries(obj)) {
+                            for (var key in o) {
+                                //property
+                                rows += '<tr><td>'+key+'</td>';
+                                //machine name
+                                rows += '<td>'+o[key].basic_info.machine_name+'</td>';
+                                //project
+                                const project = o[key].project ? o[key].project : '-';                            
+                                rows += '<td style="text-align: center;">'+project+'</td>';
+                                //collection
+                                const collection = o[key].collection ? o[key].collection : '-';                            
+                                rows += '<td style="text-align: center;">'+collection+'</td>';
+                                //resource
+                                const resource = o[key].resource ? o[key].resource : '-';
+                                rows += '<td style="text-align: center;">'+resource+'</td>';
+                            }
                         }
                         return rows;
                     }
