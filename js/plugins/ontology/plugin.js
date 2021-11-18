@@ -183,8 +183,7 @@
                     let data = CKEDITOR.ajax.load( 'https://'+ window.location.host+'/browser/api/getMetadataGui/en?_format=json' );
                     let obj = JSON.parse(data);
                     let properties = obj.properties;
-                    
-                    
+
                     function createRows(obj){
                         var rows = '';
                         for (const [k, o] of Object.entries(obj)) {
@@ -251,7 +250,7 @@
                     createRowsPPPO(properties.dates) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">RELATIONS TO OTHER PROJECTS, COLLECTIONS OR RESOURCES</td></tr>' +
                     createRowsPPPO(properties.relations_other_projects) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">CURATION, AUTOMATIC</td></tr>' +
                     createRowsPPPO(properties.curation) + '</tbody></table>' );
-            
+
                 }
             });
             
