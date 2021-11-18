@@ -195,9 +195,12 @@
                                 //project
                                 const project = o[key].project ? o[key].project : '-';                            
                                 rows += '<td style="text-align: center;">'+project+'</td>';
+                                //topcollection
+                                const topCollection = o[key].topCollection ? o[key].topCollection : '-';                            
+                                rows += '<td style="text-align: center;">'+topCollection+'</td>';
                                 //collection
                                 const collection = o[key].collection ? o[key].collection : '-';                            
-                                rows += '<td style="text-align: center;">'+collection+'</td>';
+                                rows += '<td style="text-align: center;">'+collection+'</td>';                                
                                 //resource
                                 const resource = o[key].resource ? o[key].resource : '-';
                                 rows += '<td style="text-align: center;">'+resource+'</td>';
@@ -206,7 +209,7 @@
                         return rows;
                     }
                    
-                    editor.insertHtml( '<table class="metadata-table"><thead><tr class="table-firstrow"><th style="text-align: left;">PROPERTY</th> <th style="text-align: left;">MACHINE NAME</th> <th style="text-align: center;">PROJECT</th> <th style="text-align: center;">COLLECTION</th> <th style="text-align: center;">RESOURCE</th></tr></thead><tbody>'+
+                    editor.insertHtml( '<table class="metadata-table"><thead><tr class="table-firstrow"><th style="text-align: left;">PROPERTY</th> <th style="text-align: left;">MACHINE NAME</th> <th style="text-align: center;">PROJECT</th> <th style="text-align: center;">TOPCOLLECTION</th>  <th style="text-align: center;">COLLECTION</th> <th style="text-align: center;">RESOURCE</th></tr></thead><tbody>'+
                     createRows(properties.basic) + '<tr class="table-row-acdhBlue"><td colspan="5" style="text-align">ACTORS INVOLVED</td></tr>' +
                     createRows(properties.actors_involved) + '<tr class="table-row-acdhBlue"><td colspan="5" style="text-align">COVERAGE</td></tr>' +
                     createRows(properties.coverage) + '<tr class="table-row-acdhBlue"><td colspan="5" style="text-align">RIGHTS & ACCESS</td></tr>' +
