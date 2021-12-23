@@ -1,7 +1,0 @@
-name: oeaw_ontology
-type: module
-description: 'oeaw ontology table for ckeditor.'
-core_version_requirement: ^8.8 || ^9
-package: CKEdtior
-dependencies:
-- ckeditor

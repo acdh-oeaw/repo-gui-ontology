@@ -188,27 +188,32 @@
                         var rows = '';
                         for (const [k, o] of Object.entries(obj)) {
                             for (var key in o) {
-                                //property
-                                rows += '<tr><td>'+key+'</td>';
-                                //machine name
-                                rows += '<td>'+o[key].basic_info.machine_name+'</td>';
                                 //project
-                                const project = o[key].project ? o[key].project : '-';                            
-                                rows += '<td style="text-align: center;">'+project+'</td>';
+                                const project = o[key].project ? o[key].project : '-';    
                                 //topcollection
-                                const topCollection = o[key].topCollection ? o[key].topCollection : '-';                            
-                                rows += '<td style="text-align: center;">'+topCollection+'</td>';
-                                //collection
-                                const collection = o[key].collection ? o[key].collection : '-';                            
-                                rows += '<td style="text-align: center;">'+collection+'</td>';                                
+                                const topCollection = o[key].topCollection ? o[key].topCollection : '-';  
+                                 //collection
+                                const collection = o[key].collection ? o[key].collection : '-';        
                                 //resource
                                 const resource = o[key].resource ? o[key].resource : '-';
-                                rows += '<td style="text-align: center;">'+resource+'</td>';
+                                
+                                if( project === "-" && topCollection === "-" && collection === "-" && resource === "-" ) {
+                                    //has no class
+                                } else {
+                                    //property
+                                    rows += '<tr><td>'+key+'</td>';
+                                    //machine name
+                                    rows += '<td>'+o[key].basic_info.machine_name+'</td>';
+                                    rows += '<td style="text-align: center;">'+project+'</td>';
+                                    rows += '<td style="text-align: center;">'+topCollection+'</td>';
+                                    rows += '<td style="text-align: center;">'+collection+'</td>';
+                                    rows += '<td style="text-align: center;">'+resource+'</td>';
+                                }
                             }
                         }
                         return rows;
                     }
-                    
+                    /*
                     function createRowsPPPO(obj){
                         var rows = '';
                         for (const [k, o] of Object.entries(obj)) {
@@ -234,22 +239,23 @@
                         }
                         return rows;
                     }
-                                        
-                    editor.insertHtml( '<table class="metadata-table" style="max-width:99%;"><thead><tr class="table-firstrow"><th style="text-align: left;">PROPERTY</th> <th style="text-align: left;">MACHINE NAME</th> <th style="text-align: center;">PROJECT</th> <th style="text-align: center;">TOPCOLLECTION</th>  <th style="text-align: center;">COLLECTION</th> <th style="text-align: center;">RESOURCE</th></tr></thead><tbody style=" word-break: break-word;">'+
+                         */               
+                    editor.insertHtml( '<table class="metadata-table" style="max-width:99%;"><thead><tr class="table-firstrow"><th style="text-align: left;">PROPERTY</th> <th style="text-align: left;">MACHINE NAME</th> <th style="text-align: center;">PROJECT</th> <th style="text-align: center;">TOP<br>COLLECTION</th>  <th style="text-align: center;">COLLECTION</th> <th style="text-align: center;">RESOURCE</th></tr></thead><tbody style=" word-break: break-word;">'+
                     createRows(properties.basic) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">ACTORS INVOLVED</td></tr>' +
                     createRows(properties.actors_involved) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">COVERAGE</td></tr>' +
                     createRows(properties.coverage) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">RIGHTS & ACCESS</td></tr>' +
                     createRows(properties.right_access) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">DATES</td></tr>' +
                     createRows(properties.dates) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">RELATIONS TO OTHER PROJECTS, COLLECTIONS OR RESOURCES</td></tr>' +
                     createRows(properties.relations_other_projects) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">CURATION, AUTOMATIC</td></tr>' +
-                    createRows(properties.curation) + '</tbody></table><br>' + '<table class="metadata-table"  style="max-width:99%;"><thead><tr class="table-firstrow"><th style="text-align: left;">PROPERTY</th> <th style="text-align: left;">MACHINE NAME</th> <th style="text-align: center;">PUBLICATION</th> <th style="text-align: center;">PERSON</th>  <th style="text-align: center;">PLACE</th> <th style="text-align: center;">ORGANISATION</th> </tr></thead><tbody style=" word-break: break-word;">'+
-                    createRowsPPPO(properties.basic) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">ACTORS INVOLVED</td></tr>' +
-                    createRowsPPPO(properties.actors_involved) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">COVERAGE</td></tr>' +
-                    createRowsPPPO(properties.coverage) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">RIGHTS & ACCESS</td></tr>' +
-                    createRowsPPPO(properties.right_access) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">DATES</td></tr>' +
-                    createRowsPPPO(properties.dates) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">RELATIONS TO OTHER PROJECTS, COLLECTIONS OR RESOURCES</td></tr>' +
-                    createRowsPPPO(properties.relations_other_projects) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">CURATION, AUTOMATIC</td></tr>' +
-                    createRowsPPPO(properties.curation) + '</tbody></table>' );
+                    createRows(properties.curation) + '</tbody></table><br>');
+                    //' + '<table class="metadata-table"  style="max-width:99%;"><thead><tr class="table-firstrow"><th style="text-align: left;">PROPERTY</th> <th style="text-align: left;">MACHINE NAME</th> <th style="text-align: center;">PUBLICATION</th> <th style="text-align: center;">PERSON</th>  <th style="text-align: center;">PLACE</th> <th style="text-align: center;">ORGANISATION</th> </tr></thead><tbody style=" word-break: break-word;">'+
+                    //createRowsPPPO(properties.basic) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">ACTORS INVOLVED</td></tr>' +
+                    //createRowsPPPO(properties.actors_involved) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">COVERAGE</td></tr>' +
+                    //createRowsPPPO(properties.coverage) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">RIGHTS & ACCESS</td></tr>' +
+                    //createRowsPPPO(properties.right_access) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">DATES</td></tr>' +
+                    //createRowsPPPO(properties.dates) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">RELATIONS TO OTHER PROJECTS, COLLECTIONS OR RESOURCES</td></tr>' +
+                    //createRowsPPPO(properties.relations_other_projects) + '<tr class="table-row-acdhBlue"><td colspan="6" style="text-align">CURATION, AUTOMATIC</td></tr>' +
+                    //createRowsPPPO(properties.curation) + '</tbody></table>' );
 
                 }
             });
