@@ -1,0 +1,13 @@
+{
+    "name": "acdh-oeaw/arche-gui-ontology",
+    "description": "Drupal CKEDitor module for the ACDH ARCHE GUI plugin. It is displaying a table based on the imported ontology.",
+    "type": "drupal-module",
+    "homepage": "https://github.com/acdh-oeaw/repo-gui-ontology",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Norbert Czirjak",
+            "email": "norbert.czirjak@oeaw.ac.at"
+        }
+    ]
+}
